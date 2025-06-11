@@ -14,39 +14,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { MAY_WINNERS } from "./constants";
 
-function TimePeriodSelector({
-  selectedPeriod,
-  onPeriodChange,
-}: {
-  selectedPeriod: TimePeriod;
-  onPeriodChange: (period: TimePeriod) => void;
-}) {
-  const periods: { value: TimePeriod; label: string }[] = [
-    { value: "weekly", label: "Week" },
-    { value: "monthly", label: "Month" },
-    { value: "yearly", label: "Year" },
-    { value: "all", label: "All-time" },
-  ];
-
-  return (
-    <div className="inline-flex overflow-hidden">
-      {periods.map((period) => (
-        <button
-          key={period.value}
-          onClick={() => onPeriodChange(period.value)}
-          className={`px-4 py-2 text-base font-medium transition-colors cursor-pointer border-b-2 border-b-transparent ${
-            selectedPeriod === period.value
-              ? "border-b-violet-800 text-violet-800"
-              : "bg-white text-gray-900 hover:bg-violet-50"
-          }`}
-        >
-          {period.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 export default function Home() {
   const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>("monthly");
 
@@ -98,9 +65,6 @@ export default function Home() {
           </div>
         </div>
 
-        {error && <ErrorDisplay error={error} />}
-        {isLoading && <Loading />}
-
         <div className="flex items-center gap-4 mb-4">
           <h2 className="text-base font-medium text-gray-900">
             Likes received:
@@ -110,6 +74,8 @@ export default function Home() {
             onPeriodChange={setSelectedPeriod}
           />
         </div>
+        {error && <ErrorDisplay error={error} />}
+        {isLoading && <Loading />}
 
         {data && !error && (
           <div>
@@ -125,5 +91,38 @@ export default function Home() {
       </div>
       <Footer />
     </main>
+  );
+}
+
+function TimePeriodSelector({
+  selectedPeriod,
+  onPeriodChange,
+}: {
+  selectedPeriod: TimePeriod;
+  onPeriodChange: (period: TimePeriod) => void;
+}) {
+  const periods: { value: TimePeriod; label: string }[] = [
+    { value: "weekly", label: "Week" },
+    { value: "monthly", label: "Month" },
+    { value: "yearly", label: "Year" },
+    { value: "all", label: "All-time" },
+  ];
+
+  return (
+    <div className="inline-flex overflow-hidden">
+      {periods.map((period) => (
+        <button
+          key={period.value}
+          onClick={() => onPeriodChange(period.value)}
+          className={`px-4 py-2 text-base font-medium transition-colors cursor-pointer border-b-2 border-b-transparent ${
+            selectedPeriod === period.value
+              ? "border-b-violet-800 text-violet-800"
+              : "bg-white text-gray-900 hover:bg-violet-50"
+          }`}
+        >
+          {period.label}
+        </button>
+      ))}
+    </div>
   );
 }
