@@ -53,7 +53,7 @@ export default function Home() {
               read announcement
             </Link>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-12 lg:px-6">
             {topThree?.map((winner, index) => (
               <ListItem_PastWinners
                 key={winner.id}
