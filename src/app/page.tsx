@@ -43,12 +43,13 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
               May 2025 Winners 🎉
             </h2>
-            <div className="grid grid-cols-1 px-12 lg:px-0 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {topThree?.map((winner, index) => (
                 <ListItem_PastWinners
                   key={winner.id}
                   winner={winner}
                   rank={index + 1}
+                  includeSwag={index === 0}
                 />
               ))}
             </div>

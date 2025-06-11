@@ -16,9 +16,11 @@ function TrophyIcon({ rank }: { rank: number }) {
 export function ListItem_PastWinners({
   winner,
   rank,
+  includeSwag = false,
 }: {
   winner: DirectoryItem;
   rank: number;
+  includeSwag?: boolean;
 }) {
   const credits = rank === 1 ? 50 : rank === 2 ? 25 : 10;
   const baseURL = "https://yyz1.discourse-cdn.com/flex029";
@@ -54,10 +56,15 @@ export function ListItem_PastWinners({
           </div>
           <div className="text-sm text-gray-600">@{winner.user.username}</div>
         </div>
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 flex flex-col gap-1 items-end">
           <div className="inline-flex items-center px-2 py-1 bg-violet-100 text-violet-800 text-xs font-medium">
-            +{credits} credits
+            +{credits} credits {"💰"}
           </div>
+          {includeSwag && rank === 1 && (
+            <div className="inline-flex items-center px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium">
+              + swag {"🎁"}
+            </div>
+          )}
         </div>
       </div>
     </Link>
