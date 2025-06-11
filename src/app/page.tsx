@@ -105,7 +105,6 @@ function TimePeriodSelector({
     { value: "weekly", label: "Week" },
     { value: "monthly", label: "Month" },
     { value: "yearly", label: "Year" },
-    { value: "all", label: "All-time" },
   ];
 
   return (
