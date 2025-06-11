@@ -9,6 +9,7 @@ import { ListItem_Leaderboard } from "./_components/ListItem_Leaderboard";
 import { Banner } from "./_components/Banner";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 
 export default function Home() {
   const fetcher = (): Promise<DiscourseDirectoryResponse> =>
@@ -26,21 +27,33 @@ export default function Home() {
     (item) => item.user.title !== "Roboflow"
   );
 
+  const topThree = filteredData?.slice(0, 3);
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <div className="mx-auto pt-20 pb-24" style={{ maxWidth: "1092px" }}>
+      <div
+        className="mx-auto pt-20 pb-24 px-2.5"
+        style={{ maxWidth: "1092px" }}
+      >
         <Banner />
 
-        <div className="mb-8">
-          {data?.meta && (
-            <p className="text-sm text-gray-900 text-center">
-              Last updated:{" "}
-              {new Date(data.meta.last_updated_at).toLocaleDateString()}
-            </p>
-          )}
-        </div>
-
+        {topThree && (
+          <div className="mb-12 p-4">
+            <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
+              May 2025 Winners 🎉
+            </h2>
+            <div className="grid grid-cols-1 px-12 lg:px-0 lg:grid-cols-3 gap-6">
+              {topThree?.map((winner, index) => (
+                <ListItem_PastWinners
+                  key={winner.id}
+                  winner={winner}
+                  rank={index + 1}
+                />
+              ))}
+            </div>
+          </div>
+        )}
         {error && <ErrorDisplay error={error} />}
         {isLoading && <Loading />}
 
