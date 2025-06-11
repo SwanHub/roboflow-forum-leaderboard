@@ -71,15 +71,15 @@ const Buttons_Navigation = () => {
     <div className="hidden lg:flex items-center gap-2 px-2">
       <Link
         href="https://discuss.roboflow.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-700 text-sm font-semibold bg-white transition-all
-      px-3 py-1.75 rounded-lg border border-transparent hover:text-violet-800"
+        className="text-sm font-semibold bg-white transition-all
+      px-3 py-1.75 rounded-lg border border-transparent text-violet-800"
       >
         Forum
       </Link>
       <Link
         href="https://app.roboflow.com/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-gray-700 text-sm font-semibold hover:bg-violet-100 transition-all
       px-3 py-1.75 rounded-lg border border-transparent hover:text-violet-800"
       >
