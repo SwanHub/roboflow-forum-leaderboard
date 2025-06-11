@@ -10,6 +10,7 @@ import { Banner } from "./_components/Banner";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
+import Link from "next/link";
 
 export default function Home() {
   const fetcher = (): Promise<DiscourseDirectoryResponse> =>
@@ -38,23 +39,31 @@ export default function Home() {
       >
         <Banner />
 
-        {topThree && (
-          <div className="mb-12 p-4">
-            <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
+        <div className="mb-12">
+          <div className="flex flex-col items-center justify-center gap-2 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900">
               May 2025 Winners 🎉
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {topThree?.map((winner, index) => (
-                <ListItem_PastWinners
-                  key={winner.id}
-                  winner={winner}
-                  rank={index + 1}
-                  includeSwag={index === 0}
-                />
-              ))}
-            </div>
+            <Link
+              href="https://discuss.roboflow.com/t/announcing-may-2025-forum-champions/12345"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-500 hover:text-gray-700 opacity-70 hover:opacity-100 transition-opacity"
+            >
+              read announcement
+            </Link>
           </div>
-        )}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {topThree?.map((winner, index) => (
+              <ListItem_PastWinners
+                key={winner.id}
+                winner={winner}
+                rank={index + 1}
+                includeSwag={index === 0}
+              />
+            ))}
+          </div>
+        </div>
         {error && <ErrorDisplay error={error} />}
         {isLoading && <Loading />}
 
