@@ -68,7 +68,8 @@ function Modal_HowItWorks({
         <p className="text-gray-700 leading-relaxed">
           Each month, we crown a new batch of winners based on likes received,
           answers solved, and other key metrics that measure contribution and
-          activity.
+          activity. They receive credits to their Roboflow account and the Champ
+          gets their pick of Roboflow swag.
         </p>
       </div>
     </div>
