@@ -9,7 +9,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Roboflow Forum Leaderboard",
   description:
-    "Leaderboard ranking of the most active and helpful contributors to Roboflow community forum",
+    "Leaderboard of the most active and helpful contributors to Roboflow community forum",
 };
 
 export default function RootLayout({
