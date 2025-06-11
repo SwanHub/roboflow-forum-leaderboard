@@ -3,7 +3,8 @@ export type DiscourseUser = {
   username: string;
   name: string;
   avatar_template: string;
-  title?: string;
+  trust_level: number;
+  title?: string | null;
 };
 
 export type DirectoryItem = {

@@ -11,6 +11,7 @@ import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
+import { MAY_WINNERS } from "./constants";
 
 export default function Home() {
   const fetcher = (): Promise<DiscourseDirectoryResponse> =>
@@ -27,8 +28,6 @@ export default function Home() {
   const filteredData = data?.directory_items.filter(
     (item) => item.user.title !== "Roboflow"
   );
-
-  const topThree = filteredData?.slice(0, 3);
 
   return (
     <main className="min-h-screen bg-white">
@@ -54,7 +53,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-12 lg:px-6">
-            {topThree?.map((winner, index) => (
+            {MAY_WINNERS.map((winner, index) => (
               <ListItem_PastWinners
                 key={winner.id}
                 winner={winner}
