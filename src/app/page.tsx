@@ -6,29 +6,7 @@ import { DiscourseDirectoryResponse } from "./types";
 import { ErrorDisplay } from "./_components/ErrorDisplay";
 import { Loading } from "./_components/Loading";
 import { ListItem_Leaderboard } from "./_components/ListItem_Leaderboard";
-
-function Banner() {
-  return (
-    <div
-      className="relative rounded-lg overflow-hidden mb-8"
-      style={{
-        backgroundImage: `url('https://canada1.discourse-cdn.com/flex029/uploads/roboflow1/original/2X/7/7586de4041d21349fc4e6e18c0b10f24d2317c4d.png')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="relative px-8 py-12 text-center">
-        <h1 className="text-4xl font-bold text-white mb-3">
-          Roboflow Forum Leaderboard
-        </h1>
-        <p className="text-xl text-white/90 font-medium">
-          Most active members in the last month
-        </p>
-      </div>
-    </div>
-  );
-}
+import { Banner } from "./_components/Banner";
 
 export default function Home() {
   const fetcher = (): Promise<DiscourseDirectoryResponse> =>
@@ -40,6 +18,10 @@ export default function Home() {
       refreshInterval: 300000,
       revalidateOnFocus: false,
     }
+  );
+
+  const filteredData = data?.directory_items.filter(
+    (item) => item.user.title !== "Roboflow"
   );
 
   return (
@@ -61,7 +43,7 @@ export default function Home() {
 
         {data && !error && (
           <div className="space-y-3">
-            {data.directory_items.slice(0, 10).map((item, index) => (
+            {filteredData?.slice(0, 10).map((item, index) => (
               <ListItem_Leaderboard
                 key={item.id}
                 item={item}
