@@ -1,11 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Header2() {
-  const pathname = usePathname();
-
   const navLinks = [
     { href: "https://discuss.roboflow.com/", label: "Forum", isExternal: true },
     { href: "https://app.roboflow.com/", label: "Projects", isExternal: true },
