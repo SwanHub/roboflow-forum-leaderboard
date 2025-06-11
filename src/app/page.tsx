@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <div className="mx-auto py-24" style={{ maxWidth: "1092px" }}>
+      <div className="mx-auto pt-20 pb-24" style={{ maxWidth: "1092px" }}>
         <Banner />
 
         <div className="mb-8">
