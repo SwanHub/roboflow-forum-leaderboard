@@ -7,6 +7,7 @@ import { ErrorDisplay } from "./_components/ErrorDisplay";
 import { Loading } from "./_components/Loading";
 import { ListItem_Leaderboard } from "./_components/ListItem_Leaderboard";
 import { Banner } from "./_components/Banner";
+import Header from "./_components/Header";
 
 export default function Home() {
   const fetcher = (): Promise<DiscourseDirectoryResponse> =>
@@ -25,15 +26,16 @@ export default function Home() {
   );
 
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
-      <div className="mx-auto" style={{ maxWidth: "1092px" }}>
+    <main className="min-h-screen bg-white p-2">
+      <Header />
+      <div className="mx-auto pt-18" style={{ maxWidth: "1092px" }}>
         <Banner />
 
         <div className="mb-8">
           {data?.meta && (
-            <p className="text-sm text-gray-500 text-center">
+            <p className="text-sm text-gray-900 text-center">
               Last updated:{" "}
-              {new Date(data.meta.last_updated_at).toLocaleString()}
+              {new Date(data.meta.last_updated_at).toLocaleDateString()}
             </p>
           )}
         </div>
@@ -41,11 +43,11 @@ export default function Home() {
         {error && <ErrorDisplay error={error} />}
         {isLoading && <Loading />}
 
-        {/* <h2 className="text-base font-semibold pb-4 text-gray-500">
-          Most likes received monthly
-        </h2> */}
+        <h2 className="inline-block pb-2 mb-4 text-violet-800 border-b-2 border-violet-800 cursor-pointer">
+          Likes received
+        </h2>
         {data && !error && (
-          <div className="space-y-3">
+          <div>
             {filteredData?.slice(0, 10).map((item, index) => (
               <ListItem_Leaderboard
                 key={item.id}
