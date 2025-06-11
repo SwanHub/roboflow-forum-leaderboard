@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
-    const period = "monthly";
+    const body = await request.json();
+    const period = body.period || "monthly";
     const order = "likes_received";
     const page = 0;
 
@@ -30,7 +31,7 @@ export async function POST() {
 
     const data = await response.json();
     console.log(
-      "Discourse response received, directory items count:",
+      `Discourse response received for period "${period}", directory items count:`,
       data.directory_items?.length || 0
     );
 
