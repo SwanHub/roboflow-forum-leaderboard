@@ -41,6 +41,9 @@ export default function Home() {
         {error && <ErrorDisplay error={error} />}
         {isLoading && <Loading />}
 
+        {/* <h2 className="text-base font-semibold pb-4 text-gray-500">
+          Most likes received monthly
+        </h2> */}
         {data && !error && (
           <div className="space-y-3">
             {filteredData?.slice(0, 10).map((item, index) => (

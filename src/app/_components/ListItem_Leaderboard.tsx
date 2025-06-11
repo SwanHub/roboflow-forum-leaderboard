@@ -37,7 +37,7 @@ export function ListItem_Leaderboard({
       rel="noopener noreferrer"
       className="block"
     >
-      <div className="flex items-center gap-4 p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer">
+      <div className="flex items-center gap-4 p-4 border-b-2 border-b-gray-300 hover:bg-white transition-colors cursor-pointer">
         <div className="flex-shrink-0 w-8 text-center">
           <span className={`text-2xl font-bold ${getRankColor(rank)}`}>
             #{rank}
