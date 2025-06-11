@@ -8,6 +8,7 @@ import { Loading } from "./_components/Loading";
 import { ListItem_Leaderboard } from "./_components/ListItem_Leaderboard";
 import { Banner } from "./_components/Banner";
 import Header from "./_components/Header";
+import Footer from "./_components/Footer";
 
 export default function Home() {
   const fetcher = (): Promise<DiscourseDirectoryResponse> =>
@@ -26,9 +27,9 @@ export default function Home() {
   );
 
   return (
-    <main className="min-h-screen bg-white p-2">
+    <main className="min-h-screen bg-white">
       <Header />
-      <div className="mx-auto pt-18" style={{ maxWidth: "1092px" }}>
+      <div className="mx-auto py-24" style={{ maxWidth: "1092px" }}>
         <Banner />
 
         <div className="mb-8">
@@ -58,6 +59,7 @@ export default function Home() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

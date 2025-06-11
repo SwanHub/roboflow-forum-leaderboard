@@ -41,7 +41,7 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200"
         style={{
           background:
-            "linear-gradient(to right, rgb(239, 241, 252), rgb(245, 252, 252), rgb(247, 245, 253))",
+            "linear-gradient(225deg, rgba(184,164,245,.11), rgba(149,238,232,.11) 32.81%, rgba(96,124,233,.11) 70.83%, rgba(184,164,245,.11)), #fff",
         }}
       >
         <div
@@ -71,10 +71,17 @@ const Buttons_Navigation = () => {
     <div className="hidden lg:flex items-center gap-2 px-2">
       <Link
         href="https://discuss.roboflow.com"
+        className="text-gray-700 text-sm font-semibold hover:bg-violet-100 transition-all
+      px-3 py-1.75 rounded-lg border border-transparent hover:text-violet-800"
+      >
+        Forum
+      </Link>
+      <Link
+        href="/"
         className="text-sm font-semibold bg-white transition-all
       px-3 py-1.75 rounded-lg border border-transparent text-violet-800"
       >
-        Forum
+        Leaderboard
       </Link>
       <Link
         href="https://app.roboflow.com/"
