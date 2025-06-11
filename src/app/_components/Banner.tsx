@@ -14,7 +14,7 @@ export function Banner() {
           Roboflow Forum Leaderboard
         </h1>
         <p className="text-base text-white font-semibold">
-          List of community heroes | most likes received monthly
+          Our Community Heroes
         </p>
       </div>
     </div>
