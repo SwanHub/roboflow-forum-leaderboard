@@ -2,18 +2,14 @@ import { NextResponse } from "next/server";
 
 export async function POST() {
   try {
-    // Hardcoded parameters
     const period = "monthly";
     const order = "likes_received";
     const page = 0;
 
-    // Build URL with correct endpoint (remove /admin)
     const url = new URL(`https://discuss.roboflow.com/directory_items.json`);
     url.searchParams.append("period", period);
     url.searchParams.append("order", order);
     url.searchParams.append("page", page.toString());
-
-    console.log("Discourse API URL:", url.toString());
 
     const response = await fetch(url.toString(), {
       method: "GET",
@@ -23,8 +19,6 @@ export async function POST() {
         "Api-Username": "system",
       },
     });
-
-    console.log("Discourse response status:", response.status);
 
     if (!response.ok) {
       const errorText = await response.text();
