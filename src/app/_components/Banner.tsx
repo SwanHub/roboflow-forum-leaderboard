@@ -18,7 +18,7 @@ export function Banner() {
         }}
       >
         <div className="relative px-8 py-18 text-center">
-          <h1 className="text-3xl font-bold text-white mb-3">
+          <h1 className="text-3xl text-white mb-3 font-bold">
             Roboflow Forum Leaderboard
           </h1>
           <p className="text-base text-white font-semibold mb-4">

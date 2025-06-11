@@ -46,7 +46,7 @@ export default function Header() {
       >
         <div
           className="flex flex-row items-center justify-between w-full mx-auto py-2.5 px-2"
-          style={{ maxWidth: "1092px" }}
+          style={{ maxWidth: "1110px" }}
         >
           <div className="flex flex-row items-center gap-8">
             <RoboflowLogo />

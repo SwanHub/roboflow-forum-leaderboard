@@ -34,7 +34,7 @@ export default function Home() {
       <Header />
       <div
         className="mx-auto pt-20 pb-24 px-2.5"
-        style={{ maxWidth: "1092px" }}
+        style={{ maxWidth: "1110px" }}
       >
         <Banner />
 
