@@ -148,7 +148,7 @@ export default function Home() {
               May 2025 Winners 🎉
             </h2>
             <Link
-              href="https://discuss.roboflow.com/t/introducing-community-awards-and-may-winners/10201"
+              href="https://discuss.roboflow.com/t/introducing-roboflow-community-awards-and-may-winners/10207"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-gray-500 hover:text-gray-700 opacity-70 hover:opacity-100 transition-opacity"
