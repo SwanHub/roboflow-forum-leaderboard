@@ -1,6 +1,10 @@
 "use client";
 
-import { fetchDiscoursePublicUserList, TimePeriod } from "@/lib/api/discourse";
+import {
+  fetchDiscoursePublicUserList,
+  TimePeriod,
+  OrderType,
+} from "@/lib/api/discourse";
 import useSWR from "swr";
 import { DiscourseDirectoryResponse } from "./types";
 import { ErrorDisplay } from "./_components/ErrorDisplay";
@@ -12,16 +16,116 @@ import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { MAY_WINNERS } from "./constants";
+
+// Time Period Selector Component
+function TimePeriodSelector({
+  selectedPeriod,
+  onPeriodChange,
+}: {
+  selectedPeriod: TimePeriod;
+  onPeriodChange: (period: TimePeriod) => void;
+}) {
+  const periods: { value: TimePeriod; label: string }[] = [
+    { value: "weekly", label: "Week" },
+    { value: "monthly", label: "Month" },
+    { value: "yearly", label: "Year" },
+  ];
+
+  return (
+    <div className="inline-flex overflow-hidden">
+      {periods.map((period) => (
+        <button
+          key={period.value}
+          onClick={() => onPeriodChange(period.value)}
+          className={`px-4 py-2 text-sm font-medium transition-colors ${
+            selectedPeriod === period.value
+              ? "border-b-2 border-b-violet-800"
+              : "border-b-2 border-b-transparent"
+          }`}
+        >
+          {period.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// Order Selector Component (Dropdown)
+function OrderSelector({
+  selectedOrder,
+  onOrderChange,
+}: {
+  selectedOrder: OrderType;
+  onOrderChange: (order: OrderType) => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const orders: { value: OrderType; label: string }[] = [
+    { value: "likes_received", label: "Likes Received" },
+    { value: "post_count", label: "Post Count" },
+    { value: "likes_given", label: "Likes Given" },
+  ];
+
+  const selectedOrderLabel =
+    orders.find((order) => order.value === selectedOrder)?.label ||
+    "Likes Received";
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none
+        focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+      >
+        {selectedOrderLabel}
+        <ChevronDown
+          size={16}
+          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {isOpen && (
+        <>
+          <div
+            className="fixed inset-0 z-10"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-20">
+            {orders.map((order) => (
+              <button
+                key={order.value}
+                onClick={() => {
+                  onOrderChange(order.value);
+                  setIsOpen(false);
+                }}
+                className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-50 first:rounded-t-md last:rounded-b-md ${
+                  selectedOrder === order.value
+                    ? "bg-violet-50 text-violet-700"
+                    : "text-gray-700"
+                }`}
+              >
+                {order.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function Home() {
   const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>("monthly");
+  const [selectedOrder, setSelectedOrder] =
+    useState<OrderType>("likes_received");
 
   const fetcher = (): Promise<DiscourseDirectoryResponse> =>
-    fetchDiscoursePublicUserList(selectedPeriod);
+    fetchDiscoursePublicUserList(selectedPeriod, selectedOrder);
 
   const { data, error, isLoading } = useSWR<DiscourseDirectoryResponse>(
-    `discourse-leaderboard-${selectedPeriod}`,
+    `discourse-leaderboard-${selectedPeriod}-${selectedOrder}`,
     fetcher,
     {
       refreshInterval: 300000,
@@ -30,13 +134,13 @@ export default function Home() {
   );
 
   const filteredData = data?.directory_items.filter(
-    (item) => item.user.title !== "Roboflow" && item.likes_received > 0
+    (item) => item.user.title !== "Roboflow"
   );
 
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <div className="mx-auto pt-20 pb-24 px-4" style={{ maxWidth: "1092px" }}>
+      <div className="mx-auto pt-20 pb-24 px-4" style={{ maxWidth: "1110px" }}>
         <Banner />
 
         <div className="mb-12">
@@ -66,9 +170,10 @@ export default function Home() {
         </div>
 
         <div className="flex items-center gap-4 mb-4">
-          <h2 className="text-base font-medium text-gray-900">
-            Likes received:
-          </h2>
+          <OrderSelector
+            selectedOrder={selectedOrder}
+            onOrderChange={setSelectedOrder}
+          />
           <TimePeriodSelector
             selectedPeriod={selectedPeriod}
             onPeriodChange={setSelectedPeriod}
@@ -84,6 +189,7 @@ export default function Home() {
                 key={item.id}
                 item={item}
                 rank={index + 1}
+                order={selectedOrder}
               />
             ))}
           </div>
@@ -91,37 +197,5 @@ export default function Home() {
       </div>
       <Footer />
     </main>
-  );
-}
-
-function TimePeriodSelector({
-  selectedPeriod,
-  onPeriodChange,
-}: {
-  selectedPeriod: TimePeriod;
-  onPeriodChange: (period: TimePeriod) => void;
-}) {
-  const periods: { value: TimePeriod; label: string }[] = [
-    { value: "weekly", label: "Week" },
-    { value: "monthly", label: "Month" },
-    { value: "yearly", label: "Year" },
-  ];
-
-  return (
-    <div className="inline-flex overflow-hidden">
-      {periods.map((period) => (
-        <button
-          key={period.value}
-          onClick={() => onPeriodChange(period.value)}
-          className={`px-4 py-2 text-base font-medium transition-colors cursor-pointer border-b-2 border-b-transparent ${
-            selectedPeriod === period.value
-              ? "border-b-violet-800 text-violet-800"
-              : "bg-white text-gray-900 hover:bg-violet-50"
-          }`}
-        >
-          {period.label}
-        </button>
-      ))}
-    </div>
   );
 }

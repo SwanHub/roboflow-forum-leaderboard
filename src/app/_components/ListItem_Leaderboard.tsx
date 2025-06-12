@@ -1,3 +1,4 @@
+import { OrderType } from "@/lib/api/discourse";
 import { DirectoryItem } from "../types";
 import Link from "next/link";
 
@@ -21,9 +22,11 @@ function getRankColor(rank: number): string {
 export function ListItem_Leaderboard({
   item,
   rank,
+  order,
 }: {
   item: DirectoryItem;
   rank: number;
+  order: OrderType;
 }) {
   const baseURL = "https://yyz1.discourse-cdn.com/flex029";
   const size = 240;
@@ -46,7 +49,6 @@ export function ListItem_Leaderboard({
             #{rank}
           </span>
         </div>
-
         <div className="flex-shrink-0">
           <img
             src={`${
@@ -58,7 +60,6 @@ export function ListItem_Leaderboard({
             className="w-12 h-12 rounded-full bg-gray-200"
           />
         </div>
-
         <div className="flex-grow">
           <div className="font-semibold text-gray-900">
             {item.user.name || item.user.username}
@@ -68,7 +69,11 @@ export function ListItem_Leaderboard({
 
         <div className="text-right">
           <div className="text-2xl font-bold text-violet-600">
-            {item.likes_received.toLocaleString()}
+            {order === "likes_received"
+              ? item.likes_received.toLocaleString()
+              : order === "post_count"
+              ? item.post_count.toLocaleString()
+              : item.likes_given.toLocaleString()}
           </div>
         </div>
       </div>

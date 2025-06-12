@@ -4,7 +4,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const period = body.period || "monthly";
-    const order = "likes_received";
+    const order = body.order || "likes_received";
     const page = 0;
 
     const url = new URL(`https://discuss.roboflow.com/directory_items.json`);
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
     const data = await response.json();
     console.log(
-      `Discourse response received for period "${period}", directory items count:`,
+      `Discourse response received for period "${period}" and order "${order}", directory items count:`,
       data.directory_items?.length || 0
     );
 
