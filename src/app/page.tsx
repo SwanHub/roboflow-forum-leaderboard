@@ -16,10 +16,9 @@ import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import { MAY_WINNERS } from "./constants";
+import { ChevronRight } from "lucide-react";
 
-// Time Period Selector Component
 function TimePeriodSelector({
   selectedPeriod,
   onPeriodChange,
@@ -39,10 +38,10 @@ function TimePeriodSelector({
         <button
           key={period.value}
           onClick={() => onPeriodChange(period.value)}
-          className={`px-4 py-2 text-sm font-medium transition-colors ${
+          className={`px-4 py-2 text-sm font-medium transition-colors hover:bg-violet-50 cursor-pointer ${
             selectedPeriod === period.value
               ? "border-b-2 border-b-violet-800"
-              : "border-b-2 border-b-transparent"
+              : "border-b-2 border-b-transparent text-gray-900 "
           }`}
         >
           {period.label}
@@ -80,9 +79,9 @@ function OrderSelector({
         focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
       >
         {selectedOrderLabel}
-        <ChevronDown
+        <ChevronRight
           size={16}
-          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`transition-transform ${isOpen ? "rotate-90" : ""}`}
         />
       </button>
 
@@ -149,7 +148,7 @@ export default function Home() {
               May 2025 Winners 🎉
             </h2>
             <Link
-              href="https://discuss.roboflow.com/t/announcing-may-2025-forum-champions/12345"
+              href="https://discuss.roboflow.com/t/introducing-community-awards-and-may-winners/10201"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-gray-500 hover:text-gray-700 opacity-70 hover:opacity-100 transition-opacity"
