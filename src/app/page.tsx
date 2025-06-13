@@ -40,8 +40,8 @@ function TimePeriodSelector({
           onClick={() => onPeriodChange(period.value)}
           className={`px-4 py-2 text-sm font-medium transition-colors hover:bg-violet-50 cursor-pointer ${
             selectedPeriod === period.value
-              ? "border-b-2 border-b-violet-800"
-              : "border-b-2 border-b-transparent text-gray-900 "
+              ? "border-b-2 border-b-violet-800 text-gray-900"
+              : "border-b-2 border-b-transparent text-gray-800 "
           }`}
         >
           {period.label}
