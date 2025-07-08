@@ -16,7 +16,7 @@ import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
 import { useState } from "react";
-import { JUNE_WINNERS, MAY_WINNERS } from "./constants";
+import { JUNE_WINNERS } from "./constants";
 import { ChevronRight } from "lucide-react";
 
 function TimePeriodSelector({
