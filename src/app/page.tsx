@@ -16,7 +16,7 @@ import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
 import { useState } from "react";
-import { JUNE_WINNERS } from "./constants";
+import { JULY_WINNERS } from "./constants";
 import { ChevronRight } from "lucide-react";
 
 function TimePeriodSelector({
@@ -147,10 +147,10 @@ export default function Home() {
         <div className="mb-12">
           <div className="flex flex-col items-center justify-center gap-2 mb-8">
             <h2 className="text-2xl font-bold text-gray-900">
-              June 2025 Winners 🎉
+              July 2025 Winners 🎉
             </h2>
             <Link
-              href="https://discuss.roboflow.com/t/june-roboflow-community-award-winners/10528"
+              href="https://discuss.roboflow.com/t/july-roboflow-community-awards/10867"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-gray-500 hover:text-gray-700 opacity-70 hover:opacity-100 transition-opacity"
@@ -159,7 +159,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4">
-            {JUNE_WINNERS?.map((winner, index) => (
+            {JULY_WINNERS?.map((winner, index) => (
               <ListItem_PastWinners
                 key={winner.id}
                 winner={winner}

@@ -29,6 +29,8 @@ export async function POST(request: Request) {
       );
     }
 
+    console.log("response: ", response);
+
     const data = await response.json();
     console.log(
       `Discourse response received for period "${period}" and order "${order}", directory items count:`,
