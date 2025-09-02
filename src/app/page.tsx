@@ -10,14 +10,15 @@ import { DiscourseDirectoryResponse } from "./types";
 import { ErrorDisplay } from "./_components/ErrorDisplay";
 import { Loading } from "./_components/Loading";
 import { ListItem_Leaderboard } from "./_components/ListItem_Leaderboard";
-import { Banner } from "./_components/Banner";
-import Header from "./_components/Header";
+
 import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
 import { useState } from "react";
 import { JULY_WINNERS } from "./constants";
 import { ChevronRight } from "lucide-react";
+import Header2 from "./_components/Header2";
+import { Banner2 } from "./_components/Banner2";
 
 function TimePeriodSelector({
   selectedPeriod,
@@ -140,9 +141,21 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Header />
-      <div className="mx-auto pt-20 pb-24 px-4" style={{ maxWidth: "1110px" }}>
-        <Banner />
+      <Header2 />
+      <div className="sticky-subheader">
+        <div className="subheader-container">
+          <Link href="/" className="subheader-title">
+            <img
+              src="/logos/forum_leaderboard_header.png"
+              alt="Roboflow Forum Leaderboard"
+              width={360}
+              height={360}
+            />
+          </Link>
+        </div>
+      </div>
+      <div className="mx-auto pt-8 pb-24 px-4" style={{ maxWidth: "1110px" }}>
+        <Banner2 />
 
         <div className="mb-12">
           <div className="flex flex-col items-center justify-center gap-2 mb-8">
