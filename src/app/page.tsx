@@ -154,6 +154,10 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      {/* <Modal_HowItWorks
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      /> */}
       <div className="mx-auto pt-8 pb-24 px-4" style={{ maxWidth: "1110px" }}>
         <Banner2 />
 
@@ -213,3 +217,37 @@ export default function Home() {
     </main>
   );
 }
+
+// function Modal_HowItWorks({
+//   isOpen,
+//   onClose,
+// }: {
+//   isOpen: boolean;
+//   onClose: () => void;
+// }) {
+//   if (!isOpen) return null;
+
+//   return (
+//     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+//       <div className="bg-white rounded-lg max-w-md w-full p-6 relative">
+//         <button
+//           onClick={onClose}
+//           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+//         >
+//           <X size={20} />
+//         </button>
+
+//         <h3 className="text-xl font-bold text-gray-900 mb-4">
+//           How does this work?
+//         </h3>
+
+//         <p className="text-gray-700 leading-relaxed">
+//           Each month, we crown a new batch of winners based on likes received,
+//           answers solved, and other key metrics that measure contribution and
+//           activity. They receive credits to their Roboflow account and the Champ
+//           gets their pick of Roboflow swag.
+//         </p>
+//       </div>
+//     </div>
+//   );
+// }
