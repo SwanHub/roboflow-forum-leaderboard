@@ -4,7 +4,10 @@ export default function Header2() {
   return (
     <nav className="top-nav">
       <div className="nav-container">
-        <Link href="/" className="nav-logo mr-5"></Link>
+        <Link
+          href="https://discuss.roboflow.com"
+          className="nav-logo mr-5"
+        ></Link>
         <ul className="nav-menu">
           <li className="nav-item">
             <Link
