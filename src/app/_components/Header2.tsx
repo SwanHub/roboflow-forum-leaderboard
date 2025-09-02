@@ -4,7 +4,7 @@ export default function Header2() {
   return (
     <nav className="top-nav">
       <div className="nav-container">
-        <Link href="/" className="nav-logo"></Link>
+        <Link href="/" className="nav-logo mr-5"></Link>
         <ul className="nav-menu">
           <li className="nav-item">
             <Link

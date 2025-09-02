@@ -30,7 +30,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="antialiased" style={{ fontFamily: "Arial, sans-serif" }}>
+      <body className="antialiased" style={{ fontFamily: "Inter, sans-serif" }}>
         {children}
       </body>
     </html>
