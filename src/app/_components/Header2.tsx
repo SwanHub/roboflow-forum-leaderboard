@@ -12,7 +12,7 @@ export default function Header2() {
           <li className="nav-item">
             <Link
               href="https://leaderboard.discuss.roboflow.com"
-              className="nav-link"
+              className="nav-link-active"
             >
               Leaderboard
             </Link>
