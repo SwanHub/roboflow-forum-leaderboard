@@ -179,3 +179,63 @@ export const JULY_WINNERS: DirectoryItem[] = [
     },
   },
 ];
+
+export const AUGUST_WINNERS: DirectoryItem[] = [
+  {
+    id: 0,
+    likes_received: 0,
+    likes_given: 0,
+    topic_count: 0,
+    post_count: 0,
+    topics_entered: 0,
+    posts_read: 0,
+    days_visited: 0,
+    user: {
+      id: 6136,
+      username: "Erik_Broberg",
+      name: "Erik Broberg",
+      avatar_template:
+        "/user_avatar/discuss.roboflow.com/erik_broberg/{size}/8000_2.png",
+      title: null,
+      trust_level: 1,
+    },
+  },
+  {
+    id: 0,
+    likes_received: 0,
+    likes_given: 0,
+    topic_count: 0,
+    post_count: 0,
+    topics_entered: 0,
+    posts_read: 0,
+    days_visited: 0,
+    user: {
+      id: 6004,
+      username: "mila88",
+      name: "mila",
+      avatar_template:
+        "/user_avatar/discuss.roboflow.com/mila88/{size}/8134_2.png",
+      title: null,
+      trust_level: 0,
+    },
+  },
+  {
+    id: 0,
+    likes_received: 0,
+    likes_given: 0,
+    topic_count: 0,
+    post_count: 0,
+    topics_entered: 0,
+    posts_read: 0,
+    days_visited: 0,
+    user: {
+      id: 6159,
+      username: "Matias_Garay",
+      name: "Matias Garay",
+      avatar_template:
+        "/user_avatar/discuss.roboflow.com/matias_garay/{size}/7947_2.png",
+      title: null,
+      trust_level: 0,
+    },
+  },
+];

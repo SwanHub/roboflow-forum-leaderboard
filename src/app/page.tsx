@@ -15,7 +15,7 @@ import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
 import { useState } from "react";
-import { JULY_WINNERS } from "./constants";
+import { AUGUST_WINNERS } from "./constants";
 import { ChevronRight } from "lucide-react";
 import Header2 from "./_components/Header2";
 import { Banner2 } from "./_components/Banner2";
@@ -164,10 +164,10 @@ export default function Home() {
         <div className="mb-12">
           <div className="flex flex-col items-center justify-center gap-2 mb-8">
             <h2 className="text-2xl font-bold text-gray-900">
-              July 2025 Winners 🎉
+              August 2025 Winners 🎉
             </h2>
             <Link
-              href="https://discuss.roboflow.com/t/july-roboflow-community-awards/10867"
+              href="https://discuss.roboflow.com/t/august-roboflow-community-awards/11122/2"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-gray-500 hover:text-gray-700 opacity-70 hover:opacity-100 transition-opacity"
@@ -176,9 +176,9 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4">
-            {JULY_WINNERS?.map((winner, index) => (
+            {AUGUST_WINNERS?.map((winner, index) => (
               <ListItem_PastWinners
-                key={winner.id}
+                key={index}
                 winner={winner}
                 rank={index + 1}
                 includeSwag={index === 0}
@@ -217,37 +217,3 @@ export default function Home() {
     </main>
   );
 }
-
-// function Modal_HowItWorks({
-//   isOpen,
-//   onClose,
-// }: {
-//   isOpen: boolean;
-//   onClose: () => void;
-// }) {
-//   if (!isOpen) return null;
-
-//   return (
-//     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-//       <div className="bg-white rounded-lg max-w-md w-full p-6 relative">
-//         <button
-//           onClick={onClose}
-//           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-//         >
-//           <X size={20} />
-//         </button>
-
-//         <h3 className="text-xl font-bold text-gray-900 mb-4">
-//           How does this work?
-//         </h3>
-
-//         <p className="text-gray-700 leading-relaxed">
-//           Each month, we crown a new batch of winners based on likes received,
-//           answers solved, and other key metrics that measure contribution and
-//           activity. They receive credits to their Roboflow account and the Champ
-//           gets their pick of Roboflow swag.
-//         </p>
-//       </div>
-//     </div>
-//   );
-// }
