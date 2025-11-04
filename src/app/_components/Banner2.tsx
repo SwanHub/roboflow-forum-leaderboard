@@ -55,6 +55,12 @@ export function Banner2() {
 
 const RECENT_CHAMP_POSTS = [
   {
+    title: "🏆 October Roboflow Community Awards",
+    link: "https://discuss.roboflow.com/t/october-roboflow-community-awards/11419",
+    imageUrl:
+      "https://canada1.discourse-cdn.com/flex029/uploads/roboflow1/original/2X/b/be1589be3a9aa3172a097bf287b0879fae4cbd58.jpeg",
+  },
+  {
     title: "🏆 September Roboflow Community Awards",
     link: "https://discuss.roboflow.com/t/september-roboflow-community-awards/11273",
     imageUrl:
@@ -65,11 +71,5 @@ const RECENT_CHAMP_POSTS = [
     link: "https://discuss.roboflow.com/t/august-roboflow-community-awards/11122",
     imageUrl:
       "https://canada1.discourse-cdn.com/flex029/uploads/roboflow1/original/2X/c/cd3a0440a79d41dc8e7aa0773b34af9566fbb783.jpeg",
-  },
-  {
-    title: "🏆 July Roboflow Community Awards",
-    link: "https://discuss.roboflow.com/t/july-roboflow-community-awards/10867/7",
-    imageUrl:
-      "https://canada1.discourse-cdn.com/flex029/uploads/roboflow1/original/2X/d/dbc0fe35db471d8f92f73a2de9ca33dcb5a72527.png",
   },
 ];
