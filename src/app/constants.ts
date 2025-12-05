@@ -359,3 +359,63 @@ export const OCTOBER_WINNERS: DirectoryItem[] = [
     },
   },
 ];
+
+export const NOVEMBER_WINNERS: DirectoryItem[] = [
+  {
+    id: 0,
+    likes_received: 0,
+    likes_given: 0,
+    topic_count: 0,
+    post_count: 0,
+    topics_entered: 0,
+    posts_read: 0,
+    days_visited: 0,
+    user: {
+      id: 6004,
+      username: "farm360",
+      name: "farm360",
+      avatar_template:
+        "https://yyz1.discourse-cdn.com/flex029/user_avatar/discuss.roboflow.com/farm360/288/7308_2.png",
+      title: null,
+      trust_level: 0,
+    },
+  },
+  {
+    id: 0,
+    likes_received: 0,
+    likes_given: 0,
+    topic_count: 0,
+    post_count: 0,
+    topics_entered: 0,
+    posts_read: 0,
+    days_visited: 0,
+    user: {
+      id: 540,
+      username: "Automatez",
+      name: "Zac",
+      avatar_template:
+        "/user_avatar/discuss.roboflow.com/automatez/{size}/949_2.png",
+      title: null,
+      trust_level: 1,
+    },
+  },
+  {
+    id: 0,
+    likes_received: 0,
+    likes_given: 0,
+    topic_count: 0,
+    post_count: 0,
+    topics_entered: 0,
+    posts_read: 0,
+    days_visited: 0,
+    user: {
+      id: 6159,
+      username: "Jonathan_Evans",
+      name: "Jonathan Evans",
+      avatar_template:
+        "https://yyz1.discourse-cdn.com/flex029/user_avatar/discuss.roboflow.com/jonathan_evans/288/7610_2.png",
+      title: null,
+      trust_level: 0,
+    },
+  },
+];
