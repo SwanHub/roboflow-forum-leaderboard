@@ -10,12 +10,15 @@ import { DiscourseDirectoryResponse } from "./types";
 import { ErrorDisplay } from "./_components/ErrorDisplay";
 import { Loading } from "./_components/Loading";
 import { ListItem_Leaderboard } from "./_components/ListItem_Leaderboard";
-
 import Footer from "./_components/Footer";
 import { ListItem_PastWinners } from "./_components/ListItem_PastWinners";
 import Link from "next/link";
 import { useState } from "react";
-import { NOVEMBER_WINNERS } from "./constants";
+import {
+  LATEST_WINNERS_TIMEFRAME,
+  RECENT_CHAMP_POSTS,
+  WINNERS,
+} from "./constants";
 import { ChevronRight } from "lucide-react";
 import Header2 from "./_components/Header2";
 import { Banner2 } from "./_components/Banner2";
@@ -137,8 +140,6 @@ export default function Home() {
     (item) => item.user.title !== "Roboflow"
   );
 
-  console.log(filteredData);
-
   return (
     <main className="min-h-screen bg-white">
       <Header2 />
@@ -154,20 +155,16 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      {/* <Modal_HowItWorks
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      /> */}
       <div className="mx-auto pt-8 pb-24 px-4" style={{ maxWidth: "1110px" }}>
         <Banner2 />
 
         <div className="mb-12">
           <div className="flex flex-col items-center justify-center gap-2 mb-8">
             <h2 className="text-2xl font-bold text-gray-900">
-              November 2025 Winners 🎉
+              {LATEST_WINNERS_TIMEFRAME} Winners 🎉
             </h2>
             <Link
-              href="https://discuss.roboflow.com/t/november-roboflow-community-awards/"
+              href={RECENT_CHAMP_POSTS[0].link}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-gray-500 hover:text-gray-700 opacity-70 hover:opacity-100 transition-opacity"
@@ -176,7 +173,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4">
-            {NOVEMBER_WINNERS?.map((winner, index) => (
+            {WINNERS?.map((winner, index) => (
               <ListItem_PastWinners
                 key={index}
                 winner={winner}
